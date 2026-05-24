@@ -16,7 +16,7 @@ local function isAreaOccupied(areaCFrame: CFrame, areaSize: Vector3): boolean
 		end
 	end
 
-	print("[Detection] No humanoids found, area is clear.")
+	print("[Detecti No humanoids found, area is clear.")
 	return false
 end
 
@@ -31,7 +31,7 @@ local function checkAreaThenProceed(areaCFrame: CFrame, areaSize: Vector3, onCle
 		onClear()
 	end
 end
-
+--vibe coding on top!
 
 
 

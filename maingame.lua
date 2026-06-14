@@ -329,6 +329,8 @@ watchForBoss(1)
 
 task.wait(240)
 
+   rootPart.CFrame = CFrame.new(21, 6, -40014)
+	rootPart.CFrame = CFrame.new(21, 6, -40014)
 
 	local args = {
 	 buffer.fromstring("\031\000"),

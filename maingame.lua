@@ -230,21 +230,25 @@ local bosses = {
 
 local function watchForBoss(index)
     if index > #bosses then return end
-    bossDied = false
+    local bossDied = false   -- local to this call, not shared
+    local connection         -- local to this call
     local bossData = bosses[index]
 
     local function trySetup(model)
         if bossDied then return end
         if model.Name:sub(1, #bossData.name) ~= bossData.name then return end
-		  local humanoid = model:WaitForChild("Humanoid", 5)
+
+        local humanoid = model:WaitForChild("Humanoid", 5)
+
         if not humanoid then
-    	if bossDied then return end
-   		 bossDied = true
-    	if connection then connection:Disconnect() end
-   		 bossData.onDeath()      
-   	 	watchForBoss(index + 1)  
-    	return
-	end
+            if bossDied then return end
+            bossDied = true
+            if connection then connection:Disconnect() end
+			  bossData.onDeath()
+            watchForBoss(index + 1)  -- skip, no teleport
+            return
+        end
+
         humanoid.Died:Connect(function()
             if bossDied then return end
             bossDied = true
@@ -255,9 +259,10 @@ local function watchForBoss(index)
     end
 
     for _, m in ipairs(workspace.Models:GetChildren()) do
-        trySetup(m)
+        task.spawn(trySetup, m)  -- non-blocking, loop finishes instantly
     end
     connection = workspace.Models.ChildAdded:Connect(trySetup)
+    -- connection is now set BEFORE any spawned trySetup can overwrite it
 end
 
 watchForBoss(1)

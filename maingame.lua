@@ -158,6 +158,39 @@ local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
+local function searchAndProceed(waypoints, targetName, onFound, checkDuration, checkInterval)
+    checkDuration = checkDuration or 2    -- how long to wait at each waypoint
+    checkInterval = checkInterval or 0.01  -- how often to recheck
+
+    for _, cf in ipairs(waypoints) do
+        character:PivotTo(cf)
+
+        -- wait a bit at this waypoint, rechecking repeatedly
+        local deadline = tick() + checkDuration
+        while tick() < deadline do
+            local target = workspace.Models:(targetName)
+            if target then
+                onFound(target)
+                return true
+            end
+            task.wait(checkInterval)
+        end
+    end
+
+    return false
+end
+
+local waypoints = {
+    CFrame.new(64, 201, 5022),
+    CFrame.new(-108, 101, 14949),
+    CFrame.new(-27, 94, 24988),
+	CFrame.new(-2, 138, 34910),
+}
+
+searchAndProceed(waypoints, "OrbBossThing", function(target)
+    print("Found:", target.Name)
+end, 2, 0.01)
+
 -------------------
 ---
 
@@ -179,51 +212,19 @@ local bosses = {
         onDeath = function()
             task.wait(2)
             rootPart.CFrame = CFrame.new(10, 41, 13988)
+			 workspace.Map.Presets:WaitForChild("GnomeTown"):GetPivot()
+			 rootPart.CFrame = workspace.Map.Presets.GnomeTown:GetPivot()
         end
     },
     {
         name = "GnomeChampion",
         onDeath = function()
             task.wait(2.5)
-		rootPart.CFrame = CFrame.new(21, 6, -40014)
-			local args = {
-	 buffer.fromstring("\031\000"),
-	{
-        workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
-	},
-	 {
-        1
-        }
-	}
-	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
-		rootPart.CFrame = CFrame.new(21, 6, -40014)
-
-			task.wait(0.2)
-
-	local args = {
-	 buffer.fromstring("\031\000"),
-	{
-        workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
-	},
-	 {
-        1
-        }
-	}
-	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
-
-
-	local args = {
-	buffer.fromstring("\020\000"),
-	{},
-	{}
-	}
-	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
-			        
-
-            --rootPart.CFrame = CFrame.new(-5, 26, 5001)
+			
+			
         end
     },
-    {
+    --[[{
         name = "Elder Vampire",
         onDeath = function()
             task.wait(3.5)
@@ -268,7 +269,7 @@ local bosses = {
 
         print("maybe works maybe")
         end
-    },
+    },]]
 }
 
 local function watchForBoss(index)

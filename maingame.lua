@@ -13,7 +13,15 @@ local function findSpecificButton()
     end
 end
 
+local args = {
+	buffer.fromstring("\020\000"),
+	{},
+	{}
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
 
+
+			        
 local button = findSpecificButton()
 
 if button then
@@ -178,6 +186,18 @@ local bosses = {
         onDeath = function()
             task.wait(2.5)
 		rootPart.CFrame = CFrame.new(21, 6, -40014)
+			local args = {
+	 buffer.fromstring("\031\000"),
+	{
+        workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
+	},
+	 {
+        1
+        }
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
+		rootPart.CFrame = CFrame.new(21, 6, -40014)
+
 			task.wait(0.2)
 
 	local args = {

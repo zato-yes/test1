@@ -168,7 +168,7 @@ local function searchAndProceed(waypoints, targetName, onFound, checkDuration, c
         -- wait a bit at this waypoint, rechecking repeatedly
         local deadline = tick() + checkDuration
         while tick() < deadline do
-            local target = workspace.Models:(targetName)
+            local target = workspace.Map.Presets:(AlienMothership)
             if target then
                 onFound(target)
                 return true
@@ -189,6 +189,12 @@ local waypoints = {
 
 searchAndProceed(waypoints, "OrbBossThing", function(target)
     print("Found:", target.Name)
+	workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
+    rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry:GetPivot()
+		task.wait(0.1)
+		workspace.Map.Presets.AlienMothership.BossArena:WaitForChild("Platform"):GetPivot()
+        rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
+		print("end")
 end, 2, 0.01)
 
 -------------------
@@ -220,18 +226,38 @@ local bosses = {
         name = "GnomeChampion",
         onDeath = function()
             task.wait(2.5)
-			
+			searchAndProceed(waypoints, "OrbBossThing", function(target)
+    			print("Found:", target.Name)
+				workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
+    			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry:GetPivot()
+					task.wait(0.1)
+						workspace.Map.Presets.AlienMothership.BossArena:WaitForChild("Platform"):GetPivot()
+        				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
+						print("end")
+			end, 2, 0.01)
+        end
+    },
+    {
+        name = "OrbBossThing",
+        onDeath = function()
+            task.wait(4)
+            rootPart.CFrame = CFrame.new(21, 6, -40014)
+			rootPart.CFrame = CFrame.new(21, 6, -40014)
+			local args = {
+	     	buffer.fromstring("\031\000"),
+	  		  {
+      		  workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
+    		  },
+	    	  {
+       		  1
+       		  }
+	    	  }
+	        game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
+
 			
         end
     },
     --[[{
-        name = "Elder Vampire",
-        onDeath = function()
-            task.wait(3.5)
-            rootPart.CFrame = CFrame.new(-6, 121, 27028)
-        end
-    },
-    {
         name = "SteamborneCzar",
         onDeath = function()
             task.wait(3.5)

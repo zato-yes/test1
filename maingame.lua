@@ -236,17 +236,15 @@ local function watchForBoss(index)
     local function trySetup(model)
         if bossDied then return end
         if model.Name:sub(1, #bossData.name) ~= bossData.name then return end
-
-  	    if not humanoid then
-   			 if bossDied then return end
+		  local humanoid = model:WaitForChild("Humanoid", 5)
+        if not humanoid then
+    	if bossDied then return end
    		 bossDied = true
-   		 if connection then connection:Disconnect() end
-    		bossData.onDeath()       
-    		watchForBoss(index + 1)  
-    		return
-			end
-		
-
+    	if connection then connection:Disconnect() end
+   		 bossData.onDeath()      
+   	 	watchForBoss(index + 1)  
+    	return
+	end
         humanoid.Died:Connect(function()
             if bossDied then return end
             bossDied = true

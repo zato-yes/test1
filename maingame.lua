@@ -257,22 +257,9 @@ end
 
 watchForBoss(1)
 
---[[task.wait(240)
-    rootPart.CFrame = CFrame.new(9, 337, 34956)
-    task.wait(5)
-
-    rootPart.CFrame = CFrame.new(-14, 75, 16085)
-    task.wait(4)
-    rootPart.CFrame = CFrame.new(13, 44, 46966)
-    task.wait(4)
-   rootPart.CFrame = CFrame.new(177, 39, 4717)
-   task.wait(4)
-   rootPart.CFrame = CFrame.new(13, 44, 46966)
-   task.wait(3)
-	thiefdied = true
-	rootPart.CFrame = CFrame.new(11, 1, -40010)
-	task.wait(1)
-
+task.wait(240)
+    rootPart.CFrame = CFrame.new(21, 6, -40014)
+	rootPart.CFrame = CFrame.new(21, 6, -40014)
 	local args = {
 	 buffer.fromstring("\031\000"),
 	{

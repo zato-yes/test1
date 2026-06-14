@@ -160,7 +160,7 @@ local bosses = {
     {
         name = "Thief King",
         onDeath = function()
-            task.wait(3.5)
+            task.wait(2)
             rootPart.CFrame = CFrame.new(6, 42, -3451)
             workspace.Map.Presets:WaitForChild("Dojo"):GetPivot()
             rootPart.CFrame = workspace.Map.Presets.Dojo:GetPivot()
@@ -169,14 +169,14 @@ local bosses = {
     {
         name = "MasterSamurai",
         onDeath = function()
-            task.wait(3.5)
+            task.wait(2)
             rootPart.CFrame = CFrame.new(10, 41, 13988)
         end
     },
     {
         name = "GnomeChampion",
         onDeath = function()
-            task.wait(3.5)
+            task.wait(2.5)
 		rootPart.CFrame = CFrame.new(21, 6, -40014)
 			task.wait(0.2)
 

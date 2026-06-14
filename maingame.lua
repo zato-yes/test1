@@ -177,18 +177,20 @@ local bosses = {
         name = "GnomeChampion",
         onDeath = function()
             task.wait(3.5)
-             rootPart.CFrame = CFrame.new(-6, 121, 27028)
+            rootPart.CFrame = CFrame.new(-5, 26, 5001)
         end
     },
-  --  {
-      --  name = "Elder Vampire",
-    --    onDeath = function()
-      --      task.wait(3.5)
-       --     rootPart.CFrame = CFrame.new(-6, 121, 27028)
-     --   end
-  --  },
+    {
+        name = "Elder Vampire",
+		  rootPart.CFrame = CFrame.new(-6, 121, 27028)
+        onDeath = function()
+            task.wait(3.5)
+            rootPart.CFrame = CFrame.new(-6, 121, 27028)
+        end
+    },
     {
         name = "SteamborneCzar",
+		   rootPart.CFrame = CFrame.new(-1, 94, 45962)
         onDeath = function()
             task.wait(3.5)
             rootPart.CFrame = CFrame.new(-1, 94, 45962)

@@ -237,8 +237,11 @@ local function watchForBoss(index)
         if bossDied then return end
         if model.Name:sub(1, #bossData.name) ~= bossData.name then return end
 
-        local humanoid = model:WaitForChild("Humanoid", 20)
-        if not humanoid then return end
+        local humanoid = model:WaitForChild("Humanoid", 5)
+        if not humanoid then
+				bossData.onDeath()
+			   watchForBoss(index + 1)
+		end
 
         humanoid.Died:Connect(function()
             if bossDied then return end

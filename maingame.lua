@@ -177,12 +177,34 @@ local bosses = {
         name = "GnomeChampion",
         onDeath = function()
             task.wait(3.5)
-            rootPart.CFrame = CFrame.new(-5, 26, 5001)
+		rootPart.CFrame = CFrame.new(21, 6, -40014)
+			task.wait(0.2)
+
+	local args = {
+	 buffer.fromstring("\031\000"),
+	{
+        workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
+	},
+	 {
+        1
+        }
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
+
+
+	local args = {
+	buffer.fromstring("\020\000"),
+	{},
+	{}
+	}
+	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
+			        
+
+            --rootPart.CFrame = CFrame.new(-5, 26, 5001)
         end
     },
     {
         name = "Elder Vampire",
-		
         onDeath = function()
             task.wait(3.5)
             rootPart.CFrame = CFrame.new(-6, 121, 27028)
@@ -190,7 +212,6 @@ local bosses = {
     },
     {
         name = "SteamborneCzar",
-		  
         onDeath = function()
             task.wait(3.5)
             rootPart.CFrame = CFrame.new(-1, 94, 45962)
@@ -232,24 +253,15 @@ local bosses = {
 
 local function watchForBoss(index)
     if index > #bosses then return end
-    local bossDied = false   -- local to this call, not shared
-    local connection         -- local to this call
+    bossDied = false
     local bossData = bosses[index]
 
     local function trySetup(model)
         if bossDied then return end
         if model.Name:sub(1, #bossData.name) ~= bossData.name then return end
 
-        local humanoid = model:WaitForChild("Humanoid", 5)
-
-        if not humanoid then
-            if bossDied then return end
-            bossDied = true
-            if connection then connection:Disconnect() end
-			  bossData.onDeath()
-            watchForBoss(index + 1)  -- skip, no teleport
-            return
-        end
+        local humanoid = model:WaitForChild("Humanoid", 20)
+        if not humanoid then return end
 
         humanoid.Died:Connect(function()
             if bossDied then return end
@@ -261,17 +273,16 @@ local function watchForBoss(index)
     end
 
     for _, m in ipairs(workspace.Models:GetChildren()) do
-        task.spawn(trySetup, m)  -- non-blocking, loop finishes instantly
+        trySetup(m)
     end
     connection = workspace.Models.ChildAdded:Connect(trySetup)
-    -- connection is now set BEFORE any spawned trySetup can overwrite it
 end
 
 watchForBoss(1)
 
 task.wait(240)
-    rootPart.CFrame = CFrame.new(21, 6, -40014)
-	rootPart.CFrame = CFrame.new(21, 6, -40014)
+
+
 	local args = {
 	 buffer.fromstring("\031\000"),
 	{

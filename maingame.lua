@@ -234,7 +234,7 @@ local bosses = {
         end
     },
     {
-        name = "OrbBossThing",
+        name = "[C.O.R.E]",
         onDeath = function()
             task.wait(4)
             rootPart.CFrame = CFrame.new(21, 6, -40014)

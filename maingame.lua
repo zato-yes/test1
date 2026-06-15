@@ -188,15 +188,7 @@ local waypoints = {
 	CFrame.new(-2, 138, 34910),
 }
 
-searchAndProceed(waypoints, "OrbBossThing", function(target)
-    print("Found:", target.Name)
-	workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
-    rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry:GetPivot()
-		task.wait(0.1)
-		workspace.Map.Presets.AlienMothership.BossArena:WaitForChild("Platform"):GetPivot()
-        rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
-		print("end")
-end, 2, 0.01)
+
 
 -------------------
 ---
@@ -229,6 +221,7 @@ local bosses = {
             task.wait(2.5)
 			searchAndProceed(waypoints, "OrbBossThing", function(target)
     			print("Found:", target.Name)
+					task.wait(1)
 				workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
     			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry:GetPivot()
 					task.wait(0.1)

@@ -169,7 +169,7 @@ local function searchAndProceed(waypoints, targetName, onFound, checkDuration, c
         -- wait a bit at this waypoint, rechecking repeatedly
         local deadline = tick() + checkDuration
         while tick() < deadline do
-            local target = workspace.Map.Presets:(AlienMothership)
+           local target = workspace.Map.Presets:FindFirstChild("AlienMothership")
             if target then
                 onFound(target)
                 return true

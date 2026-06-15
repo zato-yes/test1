@@ -228,7 +228,7 @@ local bosses = {
     			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry.CFrame
 					task.wait(10)
 						workspace.Map.Presets.AlienMothership.BossArena:WaitForChild("Platform"):GetPivot()
-        				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform.CFrame
+        				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
 						print("end")
 			end, 2, 0.01)
         end

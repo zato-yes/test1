@@ -44,8 +44,8 @@ pcall(function()
         local args = {...}
 
             task.spawn(function()
-                for i = 1, 200 - 1 do
-                    task.wait(0.03)
+                for i = 1, 400 - 1 do
+                    task.wait(0.0001)
                     originalMeleeHit(unpack(args))
                 end
             end)

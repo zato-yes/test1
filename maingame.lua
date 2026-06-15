@@ -1,6 +1,4 @@
 
-local placeId = game.PlaceId
-if placeId == 104770044244450 then return end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 task.wait(0.5)

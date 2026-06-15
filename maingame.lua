@@ -223,7 +223,7 @@ local bosses = {
             task.wait(2.5)
 			searchAndProceed(waypoints, "OrbBossThing", function(target)
     			print("Found:", target.Name)
-					task.wait(3)
+					task.wait(7)
 				workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
     			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry.CFrame
 					task.wait(10)

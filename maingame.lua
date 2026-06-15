@@ -225,8 +225,8 @@ local bosses = {
     			print("Found:", target.Name)
 					task.wait(7)
 				workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
-    			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry.CFrame
-					task.wait(10)
+    			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry.CFrame * CFrame.new(0, -6, 0)
+					task.wait(14)
 						workspace.Map.Presets.AlienMothership.BossArena:WaitForChild("Platform"):GetPivot()
         				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
 						print("end")

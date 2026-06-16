@@ -104,14 +104,14 @@ end
 
 local function findSword()
     if player.Character then
-        local swordInChar = player.Character:FindFirstChild("WornBlade")
+        local swordInChar = player.Character:FindFirstChild("Angel Blade")
 
         if swordInChar and swordInChar:IsA("Tool") then
             return swordInChar
         end
     end
 
-    local swordInBackpack = player:WaitForChild("Backpack"):FindFirstChild("WornBlade")
+    local swordInBackpack = player:WaitForChild("Backpack"):FindFirstChild("Angel Blade")
     if swordInBackpack and swordInBackpack:IsA("Tool") then
         return swordInBackpack
     end
@@ -231,6 +231,20 @@ local bosses = {
         				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
 						print("end")
 			end, 2, 0.01)
+			task.wait(15)
+			  rootPart.CFrame = CFrame.new(21, 6, -40014)
+			rootPart.CFrame = CFrame.new(21, 6, -40014)
+			local args = {
+	     	buffer.fromstring("\031\000"),
+	  		  {
+      		  workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
+    		  },
+	    	  {
+       		  1
+       		  }
+	    	  }
+	        game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
+
         end
     },
     {

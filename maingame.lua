@@ -162,8 +162,8 @@ local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
 local function searchAndProceed(waypoints, targetName, onFound, checkDuration, checkInterval)
-    checkDuration = checkDuration or 4    -- how long to wait at each waypoint
-    checkInterval = checkInterval or 0  -- how often to recheck
+    checkDuration = checkDuration or 7    -- how long to wait at each waypoint
+    checkInterval = checkInterval or 0.00002  -- how often to recheck
 
     for _, cf in ipairs(waypoints) do
         character:PivotTo(cf)

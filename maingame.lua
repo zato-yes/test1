@@ -1,8 +1,6 @@
 local placeId = game.PlaceId
 if placeId == 104770044244450 then
     print("lobby")
-
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/zato-yes/test1/main/lobby.lua"))()
     end)
     
 

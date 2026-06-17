@@ -1,5 +1,14 @@
-local placeId = game.PlaceId
-if placeId ~= 89744231770777 then return end
+if placeId == 104770044244450 then
+    print("lobby")
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/zato-yes/test1/main/lobby.lua"))()
+    end)
+    
+
+elseif placeId == 89744231770777 then
+    print("maingame") 
+else
+    print("unknown")
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 task.wait(0.5)

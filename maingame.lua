@@ -1,7 +1,7 @@
 local placeId = game.PlaceId
 if placeId == 104770044244450 then
     print("lobby")
-    end)
+    end
     
 
 elseif placeId == 89744231770777 then

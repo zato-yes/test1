@@ -231,7 +231,7 @@ local bosses = {
         				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
 						print("end")
 			end, 2, 0.01)
-			task.wait(15)
+			task.wait(1)
 			  rootPart.CFrame = CFrame.new(21, 6, -40014)
 			rootPart.CFrame = CFrame.new(21, 6, -40014)
 			local args = {
@@ -337,7 +337,7 @@ end
 
 watchForBoss(1)
 
-task.wait(240)
+task.wait(40)
 
    rootPart.CFrame = CFrame.new(21, 6, -40014)
 	rootPart.CFrame = CFrame.new(21, 6, -40014)

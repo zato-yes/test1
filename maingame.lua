@@ -1,3 +1,4 @@
+local placeId = game.PlaceId
 if placeId == 104770044244450 then
     print("lobby")
 

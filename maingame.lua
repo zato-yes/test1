@@ -337,7 +337,7 @@ end
 
 watchForBoss(1)
 
-task.wait(40)
+task.wait(160)
 
    rootPart.CFrame = CFrame.new(21, 6, -40014)
 	rootPart.CFrame = CFrame.new(21, 6, -40014)

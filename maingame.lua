@@ -4,11 +4,12 @@ local placeId = game.PlaceId
 if placeId == 104770044244450 then return end
 
 
+if not placeId == 104770044244450 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 task.wait(0.5)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/zato-yes/test1/refs/heads/main/poghubbackup"))()
 task.wait(0.2)
-
+end
 local function findSpecificButton()
     for _, obj in ipairs(game:GetService("CoreGui"):GetDescendants()) do
         if obj:IsA("TextButton")

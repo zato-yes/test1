@@ -1,5 +1,5 @@
 local placeId = game.PlaceId
-if placeId ~= 89744231770777  then return end
+if placeId ~= 89744231770777  then return print("wrong game") end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 task.wait(0.5)
@@ -44,7 +44,7 @@ pcall(function()
 
             task.spawn(function()
                 for i = 1, 700 - 1 do
-                    task.wait(0.0000000000000001)
+                    task.wait(0.051)
                     originalMeleeHit(unpack(args))
                 end
             end)
@@ -220,59 +220,18 @@ local bosses = {
         name = "GnomeChampion",
         onDeath = function()
             task.wait(2.5)
-			searchAndProceed(waypoints, "OrbBossThing", function(target)
-    			print("Found:", target.Name)
-					task.wait(7)
-				workspace.Map.Presets.AlienMothership.Outside.UfoBottom:WaitForChild("Entry"):GetPivot()
-    			rootPart.CFrame = workspace.Map.Presets.AlienMothership.Outside.UfoBottom.Entry.CFrame * CFrame.new(0, -15, 0)
-					task.wait(14)
-						workspace.Map.Presets.AlienMothership.BossArena:WaitForChild("Platform"):GetPivot()
-        				rootPart.CFrame = workspace.Map.Presets.AlienMothership.BossArena.Platform:GetPivot()
-						print("end")
-			end, 2, 0.01)
-			task.wait(60)
-			  rootPart.CFrame = CFrame.new(21, 6, -40014)
-			rootPart.CFrame = CFrame.new(21, 6, -40014)
-			local args = {
-	     	buffer.fromstring("\031\000"),
-	  		  {
-      		  workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
-    		  },
-	    	  {
-       		  1
-       		  }
-	    	  }
-	        game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
-
+			rootPart.CFrame = CFrame.new(-6, 121, 27028)
         end
     },
+
     {
-        name = "C.O.R.E",
-        onDeath = function()
-            task.wait(4)
-            rootPart.CFrame = CFrame.new(21, 6, -40014)
-			rootPart.CFrame = CFrame.new(21, 6, -40014)
-			local args = {
-	     	buffer.fromstring("\031\000"),
-	  		  {
-      		  workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
-    		  },
-	    	  {
-       		  1
-       		  }
-	    	  }
-	        game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
-
-			
-        end
-    },
-    --[[{
         name = "SteamborneCzar",
         onDeath = function()
             task.wait(3.5)
             rootPart.CFrame = CFrame.new(-1, 94, 45962)
         end
     },
+
     {
         name = "King Ice",
         onDeath = function()
@@ -282,29 +241,38 @@ local bosses = {
         rootPart.CFrame = CFrame.new(21, 6, -40014)
         task.wait(0.4)
           print("maybeeee")
-	    local args = {
-	     buffer.fromstring("\031\000"),
-	    {
-        workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
-    	},
-	     {
-        1
-        }
-	    }
-	    game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
 
 
-    	local args = {
-    	buffer.fromstring("\020\000"),
-    	{},
-    	{}
-    	}
-    	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
-
+        local Event = game:GetService("ReplicatedStorage").__Nets__
+        Event:FireServer(
+        (function(bytes) --[[Type: buffer]]
+        local b = buffer.create(#bytes)
+        for i = 1, #bytes do
+            buffer.writeu8(b, i - 1, bytes[i])
+        end
+        return b
+        end)({ 38, 0 }),
+         {},
+         {}
+        )
+	    
+        local Event = game:GetService("ReplicatedStorage").__Nets__
+        Event:FireServer(
+        (function(bytes) --[[Type: buffer]]
+        local b = buffer.create(#bytes)
+        for i = 1, #bytes do
+            buffer.writeu8(b, i - 1, bytes[i])
+        end
+        return b
+        end)({ 27, 0 }),
+         {},
+        {}
+        )
+  
 
         print("maybe works maybe")
         end
-    },]]
+    },
 }
 
 local function watchForBoss(index)
@@ -341,21 +309,30 @@ task.wait(160)
    rootPart.CFrame = CFrame.new(21, 6, -40014)
 	rootPart.CFrame = CFrame.new(21, 6, -40014)
 
-	local args = {
-	 buffer.fromstring("\031\000"),
-	{
-        workspace:WaitForChild("Models"):WaitForChild("CorpseBox")
-	},
-	 {
-        1
-        }
-	}
-	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
 
-
-	local args = {
-	buffer.fromstring("\020\000"),
-	{},
-	{}
-	}
-	game:GetService("ReplicatedStorage"):WaitForChild("__Nets__"):FireServer(unpack(args))
+        local Event = game:GetService("ReplicatedStorage").__Nets__
+        Event:FireServer(
+        (function(bytes) --[[Type: buffer]]
+        local b = buffer.create(#bytes)
+        for i = 1, #bytes do
+            buffer.writeu8(b, i - 1, bytes[i])
+        end
+        return b
+        end)({ 38, 0 }),
+         {},
+         {}
+        )
+	    
+        local Event = game:GetService("ReplicatedStorage").__Nets__
+        Event:FireServer(
+        (function(bytes) --[[Type: buffer]]
+        local b = buffer.create(#bytes)
+        for i = 1, #bytes do
+            buffer.writeu8(b, i - 1, bytes[i])
+        end
+        return b
+        end)({ 27, 0 }),
+         {},
+        {}
+        )
+  
